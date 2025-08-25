@@ -8,7 +8,6 @@
   "customizations": {
     "vscode": {
       "settings": {
-        // VSCodeの好みの設定を追加可能
         "files.autoSave": "onFocusChange",
         "[dart]": {
           "editor.formatOnSave": true,
@@ -29,5 +28,7 @@
         "GitHub.codespaces"
       ]
     }
-  }
+  },
+  // "postCreateCommand": "yes | /opt/flutter/bin/flutter doctor --android-licenses && yes | /opt/flutter/bin/flutter config --no-analytics && yes | /opt/flutter/bin/flutter pub get"
+  "postCreateCommand": "echo 'export DISPLAY=:1' >> /home/developer/.bashrc && echo 'pgrep Xvfb || (Xvfb :1 -screen 0 1280x720x24 &)' >> /home/developer/.bashrc && yes | /opt/flutter/bin/flutter doctor --android-licenses && /opt/flutter/bin/flutter config --no-analytics"
 }

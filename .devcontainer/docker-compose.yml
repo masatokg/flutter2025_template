@@ -1,12 +1,14 @@
+version: "3.8"
 services:
   flutter:
-    build:
-      context: ./
+    build: .
     tty: true
-    volumes:
-      - workspace-data:/home/developer/workspace
-    # LinuxのFlutterがx64アーキテクチャにしか対応していないため設定
     platform: linux/x86_64
-
-volumes:
-  workspace-data:
+    user: "developer"
+    volumes:
+      - ..:/home/developer/workspace:cached
+    ports:
+      - "5901:5901"
+      - "5554:5554"
+      - "5555:5555"
+    entrypoint: /home/developer/start-vnc.sh

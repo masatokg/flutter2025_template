@@ -1,72 +1,81 @@
+
 FROM debian:bullseye-slim
 
-# bash を既定のシェルにする
 SHELL ["/bin/bash", "-c"]
 
-# 必要なパッケージのインストール
+ENV DEBIAN_FRONTEND=noninteractive
+ENV HOME=/home/developer
+
+# ロケールのインストールと設定
 RUN apt-get update && \
-    apt-get install -y curl git wget unzip zip xz-utils sudo && \
+    apt-get install -y locales && \
+    sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+# 基本パッケージ + GUI + VNC + Android Emulator
+RUN apt-get update && \
+    apt-get install -y \
+        curl git wget unzip zip xz-utils sudo cmake ninja-build build-essential clang pkg-config \
+        libgtk-3-dev libx11-dev libglfw3-dev \
+        xfce4 xfce4-goodies x11vnc xvfb \
+        qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xserver-xorg-video-dummy && \
     rm -rf /var/lib/apt/lists/*
 
-# 開発者ユーザーの追加とsudo権限の付与
+# 開発者ユーザー作成
 RUN useradd -ms /bin/bash developer
 RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# 開発者ユーザーのホームディレクトリを設定
-ENV HOME=/home/developer
+# Flutter SDKのインストール
+ENV FLUTTER_ROOT=/opt/flutter
+RUN wget -P /tmp https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz && \
+    tar -xf /tmp/flutter_linux_3.13.9-stable.tar.xz -C /opt/ && \
+    rm -rf /tmp/flutter_linux_3.13.9-stable.tar.xz
+ENV PATH=$FLUTTER_ROOT/bin:$PATH
 
-# Java(Zulu OpenJDK)のインストール
+# Javaのインストール
 ENV JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64
+RUN wget -P /tmp/ https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip && \
+    unzip -o /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip -d /opt && \
+    rm -rf /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip
+ENV PATH=$JAVA_HOME/bin:$PATH
 
-RUN wget -P /tmp/ https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip
-RUN unzip /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip -d /opt
-
-# Javaのパスを設定
-ENV PATH=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64/bin:$PATH
-
-# Android SDKのインストールと設定
+# Android SDK
 ENV ANDROID_SDK_ROOT=/opt/Android/sdk
 ENV ANDROID_HOME=$ANDROID_SDK_ROOT
+RUN mkdir -p $ANDROID_SDK_ROOT/cmdline-tools && \
+    wget -P /tmp/ https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip && \
+    unzip -o /tmp/commandlinetools-linux-11076708_latest.zip -d $ANDROID_SDK_ROOT/cmdline-tools/ && \
+    mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/latest && \
+    rm -rf /tmp/commandlinetools-linux-11076708_latest.zip
+ENV PATH=$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-# Android SDK コマンドラインツールの展開とディレクトリ整理
-RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools
-# Android command-line tools のダウンロード
-RUN wget -P /tmp/ https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-RUN unzip /tmp/commandlinetools-linux-11076708_latest.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools/ && \
-mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest
+# SDKインストール後にchownを実行する
+RUN chown -R developer:developer /opt/flutter /opt/zulu* /opt/Android
 
-# Android cmdline-tools のパスを追加
-ENV PATH=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:$PATH
-ENV PATH=${ANDROID_SDK_ROOT}/platform-tools:$PATH
-ENV PATH=${ANDROID_SDK_ROOT}/platforms:$PATH
+# VNC スタートスクリプト
+# COPYでファイルをコンテナにコピー
+COPY start-vnc.sh /home/developer/start-vnc.sh
+# chownでファイルの所有者をdeveloperに変更
+RUN chown developer:developer /home/developer/start-vnc.sh && chmod 755 /home/developer/start-vnc.sh
 
-# Flutter SDKのインストールと設定
-ENV FLUTTER_ROOT=/opt/flutter
+# 実行権限を付与
+# RUN chmod 755 /home/developer/start-vnc.sh
 
-# Flutter SDK のダウンロードと展開
-RUN wget -P /tmp https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.4-stable.tar.xz && \
-    tar -xf /tmp/flutter_linux_3.24.4-stable.tar.xz -C /opt/
-
-# Flutterのパスを設定
-ENV PATH=${FLUTTER_ROOT}/bin:$PATH
-
-# 不要なファイルを削除
-RUN rm -rf /tmp/*
-# 各種ディレクトリの所有者を開発者ユーザーに変更
-RUN chown -R developer:developer /opt/*
-
-# 開発者ユーザーに切り替え
+# ユーザーを切り替えて作業ディレクトリを設定
 USER developer
-# 作業ディレクトリを設定
-WORKDIR $HOME
+WORKDIR /home/developer
 
-# Android SDK の各コンポーネントを sdkmanager でインストール（yesで自動応答）
-RUN yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1"
+# Android SDK componentsのインストール
+ENV ANDROID_SDK_ROOT=/opt/Android/sdk
+RUN yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "system-images;android-34;google_apis;x86_64"
+RUN yes | /opt/flutter/bin/flutter doctor --android-licenses
+RUN /opt/flutter/bin/flutter config --no-analytics
 
-# Android ライセンスに同意
-RUN yes | flutter doctor --android-licenses
-# Flutter の初回設定（analytics無効化）
-RUN flutter --disable-analytics
+# Workspace フォルダ
+RUN mkdir -p /home/developer/workspace
 
-# コンテナ起動時にbashを実行
-CMD ["/bin/bash"]
+# コンテナ起動時にVNCを起動
+# CMD ["/home/developer/start-vnc.sh"]

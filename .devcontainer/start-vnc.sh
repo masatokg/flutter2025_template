@@ -21,10 +21,14 @@ startxfce4 &
 x11vnc -display :1 -rfbport 5901 -nopw -forever -shared -bg -o /tmp/x11vnc.log -auth $XAUTH
 echo "VNC server started on display :1 (port 5901)"
 
+# Android AVDの自動作成（初回のみ）
+if [ ! -d "$HOME/.android/avd/Pixel_API_34.avd" ]; then
+    echo "no" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/avdmanager create avd -n Pixel_API_34 -k "system-images;android-34;google_apis;x86_64" --device "pixel"
+fi
+
 # Android Emulator をバックグラウンド起動
 echo "Starting Android Emulator..."
-# Android SDKのパスを絶対パスで指定
-/opt/Android/sdk/emulator/emulator -avd Pixel_API_34 -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot &
+$ANDROID_SDK_ROOT/emulator/emulator -avd Pixel_API_34 -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot &
 
 # 全てのバックグラウンドプロセスが起動するのを待つ
 sleep 10

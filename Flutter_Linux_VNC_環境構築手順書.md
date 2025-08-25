@@ -19,7 +19,7 @@
 3. インストール後、PCを再起動
 
 ### Macの場合
-1. 公式サイト(https://www.docker.com/products/docker-desktop/)から「Docker Desktop for Mac」をダウンロード
+1. 公式サイト(https://www.docker.com/products/docker-desktop/) から「Docker Desktop for Mac」をダウンロード
 2. インストーラー（.dmg）を開き、アプリケーションフォルダにドラッグ
 3. Docker Desktopを起動
 
@@ -27,18 +27,18 @@
 
 ## 3. TigerVNCクライアントのインストール
 ### Windowsの場合
-1. 公式サイト(https://tigervnc.org/)の「Downloads」からWindows用インストーラー（例：tigervnc64-*.exe）をダウンロード
+1. 公式サイト(https://tigervnc.org/) の「Downloads」からWindows用インストーラー（例：tigervnc64-*.exe）をダウンロード
 2. インストーラーを実行し、画面の指示に従ってインストール
 
 ### Macの場合
-1. 公式サイト(https://tigervnc.org/)の「Downloads」からMac用パッケージ（例：TigerVNC-*-x86_64.dmg）をダウンロード
+1. 公式サイト(https://tigervnc.org/) の「Downloads」からMac用パッケージ（例：TigerVNC-*-x86_64.dmg）をダウンロード
 2. .dmgファイルを開き、アプリケーションフォルダにコピー
 
 ---
 
 ## 4. VS CodeのインストールとDev Containers拡張の追加
 ### Windows/Mac共通
-1. 公式サイト(https://code.visualstudio.com/)からVS Codeをダウンロード・インストール
+1. 公式サイト(https://code.visualstudio.com/) からVS Codeをダウンロード・インストール
 2. VS Codeを起動
 3. 左側の拡張機能（四角いアイコン）をクリック
 4. 検索ボックスに「Dev Containers」と入力し、「Dev Containers（ms-vscode-remote.remote-containers）」をインストール
@@ -47,7 +47,7 @@
 
 ## 5. Github Desktopのインストール
 ### Windows/Mac共通
-1. 公式サイト(https://desktop.github.com/)からインストーラーをダウンロード
+1. 公式サイト(https://desktop.github.com/) からインストーラーをダウンロード
 2. インストーラーを実行し、画面の指示に従ってインストール
 
 ---

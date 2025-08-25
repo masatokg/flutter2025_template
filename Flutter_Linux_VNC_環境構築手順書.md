@@ -52,12 +52,12 @@
 
 ---
 
-## 6. リポジトリのクローン（Github Desktop経由）
-1. Github Desktopを起動
-2. メニューから「File」→「Clone repository...」を選択
-3. 「URL」タブにリポジトリのURL（例：https://github.com/masatokg/container2025_test ）を貼り付け
-4. 「Clone」をクリック
-5. クローン先のフォルダを選択し、完了
+## 6. リポジトリのクローン（Githubリポジトリ画面→Github Desktop）
+1. Webブラウザで対象のGithubリポジトリ（例：https://github.com/masatokg/container2025_test）を開く
+2. 緑色の「Code」ボタンをクリック
+3. 「Open with Github Desktop」を選択
+4. Github Desktopアプリが自動で起動し、リポジトリのコピーを配置したいクローン先のフォルダを選択して「Clone」をクリック
+5. クローンが完了したら、ローカルPC上にリポジトリが作成されます
 
 ---
 

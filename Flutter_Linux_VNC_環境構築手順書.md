@@ -110,6 +110,9 @@ flutter run
 - Flutter runでDISPLAYエラーが出る場合:
   - ターミナルを再起動、または`export DISPLAY=:1`を実行
 
+- Dev Containers: Reopen in Container でエラーが発生する場合:
+  - キャッシュが影響している場合があります。コマンドパレット（Ctrl+Shift+P）で「Dev Containers: Rebuild and Reopen in Container」を選択し、キャッシュなしで再ビルドを試してください。
+
 ---
 
 ## 11. 補足

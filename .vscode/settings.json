@@ -1,4 +1,5 @@
 {
     "dart.shareDevToolsWithFlutter": false,
+    // Flutter SDKのパス
     "dart.flutterSdkPath": "/opt/flutter/bin/flutter"
 }

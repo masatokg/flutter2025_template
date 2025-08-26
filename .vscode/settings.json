@@ -1,0 +1,4 @@
+{
+    "dart.shareDevToolsWithFlutter": false,
+    "dart.flutterSdkPath": "/opt/flutter/bin/flutter"
+}

@@ -2,6 +2,7 @@
 
 ## 概要
 この手順書は、VS Code Dev Containers機能とDockerを用いて、Flutter LinuxデスクトップアプリをVNC経由でGUI表示・開発できる環境の構築方法をまとめたものです。
+Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプリとしても動作確認が可能ですので、エミュレーター確認操作を総略できます。
 
 ---
 
@@ -70,7 +71,7 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 ---
 
 ## 6. リポジトリのクローン（Githubリポジトリ画面→Github Desktop）
-1. Webブラウザで対象のGithubリポジトリ（例：https://github.com/masatokg/container2025_test）を開く
+1. パソコンからWebブラウザで対象のGithubリポジトリ（例：https://github.com/masatokg/container2025_test ) を開く
 2. 緑色の「Code」ボタンをクリック
 3. 「Open with Github Desktop」を選択
 4. Github Desktopアプリが自動で起動し、リポジトリのコピーを配置したいクローン先のフォルダを選択して「Clone」をクリック
@@ -96,14 +97,37 @@ flutter run
 ---
 
 ## 9. VNCでGUI画面を確認
-1. TigerVNC Viewerを起動
-2. 接続先: `localhost:5901` で接続
+1. パソコンでTigerVNC Viewerを起動
+2. 接続ウィンドウに接続先: `localhost:5901` を入力して接続
 3. パスワード不要（空欄でOK）
-4. LinuxデスクトップとFlutterアプリのウィンドウが表示されます
+4. 仮想Linuxデスクトップのウィンドウとその中にFlutterアプリのウィンドウが表示されます
 
 ---
 
-## 10. トラブルシューティング
+
+## 10. Flutterアプリのデバッグについて
+Flutterアプリを起動すると、以下のようなメッセージが表示される場合があります。
+
+```
+A Dart VM Service on Linux is available at: http://127.0.0.1:43381/L3wW2Cu76v4=/
+The Flutter DevTools debugger and profiler on Linux is available at:
+http://127.0.0.1:9102?uri=http://127.0.0.1:43381/L3wW2Cu76v4=/
+```
+
+この場合、Webブラウザで上記の「Flutter DevTools」のURL（例: http://127.0.0.1:9102?...）にアクセスすると、
+Flutterアプリのデバッグやプロファイリングが可能です。
+
+主な機能：
+- Widgetツリーの確認・編集
+- パフォーマンスの計測
+- メモリ・CPUのモニタリング
+- ログの確認
+
+デバッグやパフォーマンス解析を行いたい場合は、表示されたURLをコピーしてブラウザで開いてください。
+
+---
+
+## 11. トラブルシューティング
 - VNCで接続できない場合:
   - コンテナを再起動し、5901ポートがLISTENしているか確認
   - `tail -n 50 /tmp/x11vnc.log` でx11vncのログを確認
@@ -115,7 +139,7 @@ flutter run
 
 ---
 
-## 11. 補足
+## 12. 補足
 - VNCサーバはstart-vnc.shで自動起動します
 - x11vncは5901ポートで待ち受け
 - Xvfbの仮想ディスプレイは:1

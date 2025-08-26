@@ -2,7 +2,7 @@
 
 ## 概要
 この手順書は、VS Code Dev Containers機能とDockerを用いて、Flutter LinuxデスクトップアプリをVNC経由でGUI表示・開発できる環境の構築方法をまとめたものです。
-Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプリとしても動作確認が可能ですので、エミュレーター確認操作を総略できます。
+Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプリとしても動作確認が可能ですので、モバイルデバイスのエミュレーター確認操作を省略できます。
 
 ---
 
@@ -10,6 +10,7 @@ Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプ�
 - インターネット接続環境
 - 管理者権限のあるPC（WindowsまたはMac）
 - Windowsの場合、5901ポートがファイアウォールで許可されていること
+- **Macの場合はWSL（Windows Subsystem for Linux）相当の機能追加は不要です**
 
 ---
 

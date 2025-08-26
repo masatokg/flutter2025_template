@@ -23,9 +23,9 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
   - 「ファイル名を指定して実行」（Win + R）で optionalfeatures と入力してOKを押す
   その後、「Windows Subsystem for Linux」と「仮想マシンプラットフォーム」にチェックを入れてOKを押す
   ※「Windows Subsystem for Linux」は、環境によって「Linux 用 Windows サブシステム」や「WSL」などと表示されている場合があります。「Linux」や「WSL」で検索すると見つけやすいです。
-2. PCを再起動
+2. PCを再起動しください
 
-※Linuxディストリビューション（Ubuntu等）のインストールは、Docker DesktopでLinuxコンテナを利用するだけなら不要です。
+※Linuxディストリビューション（Ubuntu等のOS）のインストールという選択肢が途中にありますが、今回のようにDocker DesktopでLinuxコンテナを利用するだけなら選択不要です。
 ※詳細はDocker公式ドキュメント（https://docs.docker.com/desktop/wsl/）も参照してください。
 
 ## 3. Docker Desktopのインストール

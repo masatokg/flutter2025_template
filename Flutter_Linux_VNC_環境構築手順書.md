@@ -12,13 +12,8 @@
 
 ---
 
-## 2. Dockerのインストール
-### Windowsの場合
-1. 公式サイト(https://www.docker.com/products/docker-desktop/) から「Docker Desktop for Windows」をダウンロード
-2. インストーラーを実行し、画面の指示に従ってインストール
-3. インストール後、PCを再起動
 
-#### 【重要】WSL2の有効化手順（Windowsのみ）
+## 2. WSL2の有効化（Windowsのみ）
 
 Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsystem for Linux 2）の有効化が必要です。
 
@@ -28,11 +23,17 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
   その後、「Windows Subsystem for Linux」と「仮想マシンプラットフォーム」にチェックを入れてOKを押す
   ※「Windows Subsystem for Linux」は、環境によって「Linux 用 Windows サブシステム」や「WSL」などと表示されている場合があります。「Linux」や「WSL」で検索すると見つけやすいです。
 2. PCを再起動
-3. Docker Desktop初回起動時に「WSL2を有効にしますか？」と表示されたら「有効にする」を選択
-4. 設定画面の「Resources」→「WSL Integration」で、WSL2が有効になっていることを確認
 
 ※Linuxディストリビューション（Ubuntu等）のインストールは、Docker DesktopでLinuxコンテナを利用するだけなら不要です。
 ※詳細はDocker公式ドキュメント（https://docs.docker.com/desktop/wsl/）も参照してください。
+
+## 3. Docker Desktopのインストール
+### Windowsの場合
+1. 公式サイト(https://www.docker.com/products/docker-desktop/) から「Docker Desktop for Windows」をダウンロード
+2. インストーラーを実行し、画面の指示に従ってインストール
+3. インストール後、PCを再起動
+4. Docker Desktop初回起動時に「WSL2を有効にしますか？」と表示されたら「有効にする」を選択
+5. 設定画面の「Resources」→「WSL Integration」で、WSL2が有効になっていることを確認
 
 ### Macの場合
 1. 公式サイト(https://www.docker.com/products/docker-desktop/) から「Docker Desktop for Mac」をダウンロード

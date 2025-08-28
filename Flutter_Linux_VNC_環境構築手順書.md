@@ -35,7 +35,9 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 2. インストーラーを実行し、画面の指示に従ってインストール
 3. インストール後、PCを再起動
 4. Docker Desktop初回起動時に「WSL2を有効にしますか？」と表示されたら「有効にする」を選択
-5. 設定画面の「Resources」→「WSL Integration」で、WSL2が有効になっていることを確認
+5. Docker Desktop初回起動時に「WSL needs updating」のメッセージ画面が表示されたら、そこに示されている「wsl --update」のコマンドをコピーしてPowershellに張り付けて実行、WSLがupdateされます。そのあと、「WSL needs updating」のメッセージ画面に表示される「Restart」ボタンを押して、Docker Desktopを再起動してください。
+6. 設定画面の「Resources」→「WSL Integration」で、WSL2が有効になっていることを確認
+7. あとの手順でVScodeで Dev container をOpenしますが、DockerDesktopが起動中でないとエラーになりますのでご注意ください。
 
 ### Macの場合
 1. 公式サイト(https://www.docker.com/products/docker-desktop/) から「Docker Desktop for Mac」をダウンロード

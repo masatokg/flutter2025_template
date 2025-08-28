@@ -1,5 +1,6 @@
 #!/bin/bash
-
+set -x
+# VNCサーバーとAndroidエミュレーターを起動するスクリプト
 
 # Xvfb 仮想ディスプレイ起動
 export DISPLAY=:1

@@ -85,7 +85,7 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 ## 7. Dev Containerの起動
 1. Github DesktopでクローンしたフォルダをVS Codeで開く（「Open in Visual Studio Code」ボタンを利用）
 2. コマンドパレット（Ctrl+Shift+P）で「Dev Containers: Reopen in Container」を選択
-3. 自動でDockerイメージのビルド・コンテナ起動・依存パッケージのセットアップが行われます
+3. 自動でDockerイメージのビルド・コンテナ起動・依存パッケージのセットアップが行われます。もし途中で「press any key～～」というメッセージが出てログが止まったら、任意のキーを押してください。
 
 ---
 

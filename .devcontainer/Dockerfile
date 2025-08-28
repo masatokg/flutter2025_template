@@ -35,12 +35,16 @@ RUN wget -P /tmp https://storage.googleapis.com/flutter_infra_release/releases/s
     rm -rf /tmp/flutter_linux_3.13.9-stable.tar.xz
 ENV PATH=$FLUTTER_ROOT/bin:$PATH
 
+
 # Javaのインストール
 ENV JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64
 RUN wget -P /tmp/ https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip && \
     unzip -o /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip -d /opt && \
     rm -rf /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip
 ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Node.jsのインストール（VS Code Remote-Containers用）
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
 
 # Android SDK
 ENV ANDROID_SDK_ROOT=/opt/Android/sdk
@@ -64,7 +68,7 @@ RUN chown developer:developer /home/developer/start-vnc.sh && chmod 755 /home/de
 # 実行権限を付与
 # RUN chmod 755 /home/developer/start-vnc.sh
 
-# ユーザーを切り替えて作業ディレクトリを設定
+# ユーザーを切り替えて作業ディレクトリを設定 
 USER developer
 WORKDIR /home/developer
 
@@ -74,7 +78,7 @@ RUN yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;an
 RUN yes | /opt/flutter/bin/flutter doctor --android-licenses
 RUN /opt/flutter/bin/flutter config --no-analytics
 
-# Workspace フォルダ
+# Workspace フォルダ 
 RUN mkdir -p /home/developer/workspace
 
 # コンテナ起動時にVNCを起動

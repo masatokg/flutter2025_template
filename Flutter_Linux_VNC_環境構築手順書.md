@@ -11,6 +11,7 @@ Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプ�
 - 管理者権限のあるPC（WindowsまたはMac）
 - Windowsの場合、5901ポートがファイアウォールで許可されていること
 - **Macの場合はWSL（Windows Subsystem for Linux）相当の機能追加は不要です**
+- **パソコンにgitがインストールされていること**
 
 ---
 
@@ -66,14 +67,46 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 
 ---
 
-## 5. Github Desktopのインストール
+## 5. gitのインストール確認と設定
+
+1. ターミナルまたはコマンドプロンプトで以下を実行し、gitがインストールされているか確認します。
+   ```
+   git --version
+   ```
+   バージョン情報が表示されればインストール済みです。
+
+2. インストールされていない場合は、以下の手順でインストールしてください。
+
+   #### Windowsの場合
+   - 公式サイト（https://git-scm.com/）からインストーラーをダウンロードし、画面の指示に従ってインストール
+
+   #### Macの場合
+   - ターミナルで以下を実行
+     ```
+     xcode-select --install
+     ```
+     または、Homebrewを利用している場合は
+     ```
+     brew install git
+     ```
+
+3. インストール後、以下のコマンドで文字コードと改行コードの自動変換を無効化します。
+   ```
+   git config --global core.autocrlf false
+   git config --global core.safecrlf false
+   git config --global i18n.commitEncoding UTF-8
+   git config --global i18n.logOutputEncoding UTF-8
+   ```
+---
+
+## 6. Github Desktopのインストール
 ### Windows/Mac共通
 1. 公式サイト(https://desktop.github.com/) からインストーラーをダウンロード
 2. インストーラーを実行し、画面の指示に従ってインストール
 
 ---
 
-## 6. リポジトリのクローン（Githubリポジトリ画面→Github Desktop）
+## 7. リポジトリのクローン（Githubリポジトリ画面→Github Desktop）
 1. パソコンからWebブラウザで対象のGithubリポジトリ（例：https://github.com/masatokg/container2025_test ) を開く
 2. 緑色の「Code」ボタンをクリック
 3. 「Open with Github Desktop」を選択
@@ -82,14 +115,14 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 
 ---
 
-## 7. Dev Containerの起動
+## 8. Dev Containerの起動
 1. Github DesktopでクローンしたフォルダをVS Codeで開く（「Open in Visual Studio Code」ボタンを利用）
 2. コマンドパレット（Ctrl+Shift+P）で「Dev Containers: Reopen in Container」を選択
 3. 自動でDockerイメージのビルド・コンテナ起動・依存パッケージのセットアップが行われます。もし途中で「press any key～～」というメッセージが出てログが止まったら、任意のキーを押してください。
 
 ---
 
-## 8. Flutterアプリの起動
+## 9. Flutterアプリの起動
 1. VS Codeのターミナルで以下を実行
 ```
 cd my_app
@@ -99,7 +132,7 @@ flutter run
 
 ---
 
-## 9. VNCでGUI画面を確認
+## 10. VNCでGUI画面を確認
 1. パソコンでTigerVNC Viewerを起動
 2. 接続ウィンドウに接続先: `localhost:5901` を入力して接続
 3. パスワード不要（空欄でOK）
@@ -107,8 +140,7 @@ flutter run
 
 ---
 
-
-## 10. Flutterアプリのデバッグについて
+## 11. Flutterアプリのデバッグについて
 Flutterアプリを起動すると、以下のようなメッセージが表示される場合があります。
 
 ```
@@ -130,7 +162,7 @@ Flutterアプリのデバッグやプロファイリングが可能です。
 
 ---
 
-## 11. トラブルシューティング
+## 12. トラブルシューティング
 - VNCで接続できない場合:
   - コンテナを再起動し、5901ポートがLISTENしているか確認
   - `tail -n 50 /tmp/x11vnc.log` でx11vncのログを確認
@@ -142,18 +174,14 @@ Flutterアプリのデバッグやプロファイリングが可能です。
 
 ---
 
-## 12. 補足
+## 13. 補足
 - VNCサーバはstart-vnc.shで自動起動します
 - x11vncは5901ポートで待ち受け
 - Xvfbの仮想ディスプレイは:1
 
 ---
 
-## 12. 参考
+## 14. 参考
 - Docker, VS Code Dev Containers公式ドキュメント
 - Flutter公式ドキュメント
 - VNC関連FAQ: http://www.karlrunge.com/x11vnc/faq.html
-
----
-
-以上

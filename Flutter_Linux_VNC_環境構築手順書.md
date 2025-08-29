@@ -12,8 +12,8 @@ Android/iOSに依存しない機能は、Flutter Linuxデスクトップアプ�
 - インターネット接続環境
 - 管理者権限のあるPC（WindowsまたはMac）
 - Windowsの場合、5901ポートがファイアウォールで許可されていること
-- **Macの場合はWSL（Windows Subsystem for Linux）相当の機能追加は不要です**
-- **パソコンにgitがインストールされていること**
+- **Macの場合はWSL（Windows Subsystem for Linux）相当の機能追加は不要です。 Windowsは、この手順でWSLを有効化します。**
+- **パソコンにgitがインストールされていること。されていない場合は、この手順内でインストールします**
 
 ---
 

@@ -1,5 +1,5 @@
 # Flutter + Linux GUI + VNC 開発環境 構築手順書
-## 以下のリンク先でも同じ内容を公開しています。
+## 以下のリンク先でも同じ手順内容を公開しています。
 ## https://fern-lint-66e.notion.site/Flutter-Linux-GUI-VNC-25e0cb61616b80038c7dff526c8c0a24?source=copy_link
 
 ## 概要

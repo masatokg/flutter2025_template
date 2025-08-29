@@ -30,5 +30,5 @@
       ]
     }
   },
-  "postCreateCommand": "echo 'export PATH=/opt/flutter/bin:$PATH' >> /home/developer/.bashrc && echo 'export DISPLAY=:1' >> /home/developer/.bashrc && echo 'pgrep Xvfb || (Xvfb :1 -screen 0 1280x720x24 &)' >> /home/developer/.bashrc && yes | /opt/flutter/bin/flutter doctor --android-licenses && /opt/flutter/bin/flutter config --no-analytics"
+  "postCreateCommand": "echo 'export PATH=/opt/flutter/bin:$PATH' >> /home/developer/.bashrc && echo 'export DISPLAY=:1' >> /home/developer/.bashrc && echo 'pgrep Xvfb || (Xvfb :1 -screen 0 1280x720x24 &)' >> /home/developer/.bashrc && yes | /opt/flutter/bin/flutter doctor --android-licenses && /opt/flutter/bin/flutter config --no-analytics && cd my_app && flutter pub get && echo 'Flutter pub get at my_app complete'"
 }

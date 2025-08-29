@@ -151,7 +151,7 @@ The Flutter DevTools debugger and profiler on Linux is available at:
 http://127.0.0.1:9102?uri=http://127.0.0.1:43381/L3wW2Cu76v4=/
 ```
 
-この場合、Webブラウザで上記の「Flutter DevTools」のURL（例: http://127.0.0.1:9102?...）にアクセスすると、
+この場合、Webブラウザで上記の「Flutter DevTools」のURL（ 例: http://127.0.0.1:9102?... ）にアクセスすると、
 Flutterアプリのデバッグやプロファイリングが可能です。
 
 主な機能：

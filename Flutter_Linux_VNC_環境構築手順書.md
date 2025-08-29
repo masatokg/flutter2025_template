@@ -71,7 +71,7 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 
 ## 5. gitのインストール確認と設定
 
-1. ターミナルまたはコマンドプロンプトで以下を実行し、gitがインストールされているか確認します。
+1. Macターミナル または WindowsPowerShell で以下を実行し、gitがインストールされているか確認します。
    ```
    git --version
    ```

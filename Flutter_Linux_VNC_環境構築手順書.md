@@ -60,7 +60,7 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 
 ## 4. VS CodeのインストールとDev Containers拡張の追加
 ### Windows/Mac共通
-1. 公式サイト(https://code.visualstudio.com/) からVS Codeをダウンロード・インストール
+1. 公式サイト（ https://code.visualstudio.com/ ) からVS Codeをダウンロード・インストール
 2. VS Codeを起動
 3. 左側の拡張機能（四角いアイコン）をクリック
 4. 検索ボックスに「Dev Containers」と入力し、「Dev Containers（ms-vscode-remote.remote-containers）」をインストール
@@ -78,7 +78,7 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 2. インストールされていない場合は、以下の手順でインストールしてください。
 
    #### Windowsの場合
-   - 公式サイト（https://git-scm.com/）からインストーラーをダウンロードし、画面の指示に従ってインストール
+   - 公式サイト（ https://git-scm.com/ ）からインストーラーをダウンロードし、画面の指示に従ってインストール
 
    #### Macの場合
    - ターミナルで以下を実行

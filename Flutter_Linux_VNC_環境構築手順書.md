@@ -1,6 +1,6 @@
 # Flutter + Linux GUI + VNC 開発環境 構築手順書
 ## 以下のリンク先でも同じ手順内容を公開しています。
-## https://fern-lint-66e.notion.site/Flutter-Linux-GUI-VNC-25e0cb61616b80e694ccfd9d6931fa56?source=copy_link
+## [https://fern-lint-66e.notion.site/Flutter-Linux-GUI-VNC-25e0cb61616b80e694ccfd9d6931fa56](https://fern-lint-66e.notion.site/Flutter-Linux-GUI-VNC-25e0cb61616b80e694ccfd9d6931fa56)
 
 ## 概要
 この手順書は、VS Code Dev Containers機能とDockerを用いて、Flutter LinuxデスクトップアプリをVNC経由でGUI表示・開発できる環境の構築方法をまとめたものです。

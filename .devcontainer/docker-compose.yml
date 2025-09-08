@@ -3,7 +3,6 @@ services:
   flutter:
     build: .
     tty: true
-    platform: linux/x86_64
     user: "developer"
     volumes:
       - ..:/home/developer/workspace:cached

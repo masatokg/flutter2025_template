@@ -1,4 +1,5 @@
 
+ARG TARGETARCH
 FROM debian:bullseye-slim
 
 SHELL ["/bin/bash", "-c"]
@@ -28,19 +29,33 @@ RUN apt-get update && \
 RUN useradd -ms /bin/bash developer
 RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Flutter SDKのインストール
+# Flutter SDKのインストール (architecture自動判定)
 ENV FLUTTER_ROOT=/opt/flutter
-RUN wget -P /tmp https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz && \
-    tar -xf /tmp/flutter_linux_3.13.9-stable.tar.xz -C /opt/ && \
-    rm -rf /tmp/flutter_linux_3.13.9-stable.tar.xz
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_arm64_3.13.9-stable.tar.xz"; \
+    else \
+        FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"; \
+    fi && \
+    wget -P /tmp "$FLUTTER_URL" && \
+    tar -xf /tmp/$(basename "$FLUTTER_URL") -C /opt/ && \
+    rm -rf /tmp/$(basename "$FLUTTER_URL")
 ENV PATH=$FLUTTER_ROOT/bin:$PATH
 
 
-# Javaのインストール
+# Javaのインストール (architecture自動判定)
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_aarch64; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_aarch64.zip"; \
+    else \
+        JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip"; \
+    fi && \
+    wget -P /tmp/ "$JAVA_URL" && \
+    unzip -o /tmp/$(basename "$JAVA_URL") -d /opt && \
+    rm -rf /tmp/$(basename "$JAVA_URL") && \
+    echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile.d/java_home.sh && \
+    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile.d/java_home.sh
 ENV JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64
-RUN wget -P /tmp/ https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip && \
-    unzip -o /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip -d /opt && \
-    rm -rf /tmp/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Node.jsのインストール（VS Code Remote-Containers用）
@@ -72,9 +87,14 @@ RUN chown developer:developer /home/developer/start-vnc.sh && chmod 755 /home/de
 USER developer
 WORKDIR /home/developer
 
-# Android SDK componentsのインストール
+# Android SDK componentsのインストール (architecture自動判定)
 ENV ANDROID_SDK_ROOT=/opt/Android/sdk
-RUN yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "system-images;android-34;google_apis;x86_64"
+RUN if [ "$TARGETARCH" = "arm64" ]; then \
+        SYSIMG="system-images;android-34;google_apis;arm64-v8a"; \
+    else \
+        SYSIMG="system-images;android-34;google_apis;x86_64"; \
+    fi && \
+    yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "$SYSIMG"
 RUN yes | /opt/flutter/bin/flutter doctor --android-licenses
 RUN /opt/flutter/bin/flutter config --no-analytics
 

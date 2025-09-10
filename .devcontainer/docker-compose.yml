@@ -1,7 +1,11 @@
 version: "3.8"
 services:
   flutter:
-    build: .
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        TARGETARCH: ${TARGETARCH:-amd64}
     tty: true
     user: "developer"
     volumes:

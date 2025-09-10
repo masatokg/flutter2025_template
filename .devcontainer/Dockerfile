@@ -1,5 +1,5 @@
 
-ARG TARGETARCH
+ARG TARGETARCH=amd64
 FROM debian:bullseye-slim
 
 SHELL ["/bin/bash", "-c"]
@@ -76,7 +76,7 @@ RUN chown -R developer:developer /opt/flutter /opt/zulu* /opt/Android
 
 # VNC スタートスクリプト
 # COPYでファイルをコンテナにコピー
-COPY start-vnc.sh /home/developer/start-vnc.sh
+COPY .devcontainer/start-vnc.sh /home/developer/start-vnc.sh
 # chownでファイルの所有者をdeveloperに変更
 RUN chown developer:developer /home/developer/start-vnc.sh && chmod 755 /home/developer/start-vnc.sh
 

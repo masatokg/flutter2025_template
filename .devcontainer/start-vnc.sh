@@ -35,7 +35,8 @@ fi
 
 # Android Emulator をバックグラウンド起動
 echo "Starting Android Emulator..."
-$ANDROID_SDK_ROOT/emulator/emulator -avd Pixel_API_34 -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot &
+# In most Docker-on-Mac/Windows cases, KVM is unavailable; disable accel to avoid failures
+$ANDROID_SDK_ROOT/emulator/emulator -avd Pixel_API_34 -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -accel off &
 
 # 全てのバックグラウンドプロセスが起動するのを待つ
 sleep 10

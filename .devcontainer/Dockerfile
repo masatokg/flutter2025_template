@@ -20,7 +20,7 @@ ENV LC_ALL=en_US.UTF-8
 RUN apt-get update && \
     apt-get install -y \
         curl git wget unzip zip xz-utils sudo cmake ninja-build build-essential clang pkg-config \
-        libgtk-3-dev libx11-dev libglfw3-dev \
+    libgtk-3-dev libx11-dev libglfw3-dev xauth \
         xfce4 xfce4-goodies x11vnc xvfb \
         qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xserver-xorg-video-dummy && \
     rm -rf /var/lib/apt/lists/*

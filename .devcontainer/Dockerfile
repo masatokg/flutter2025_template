@@ -55,8 +55,6 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
     rm -rf /tmp/$(basename "$JAVA_URL") && \
     echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile.d/java_home.sh && \
     echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile.d/java_home.sh
-ENV JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64
-ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Node.jsのインストール（VS Code Remote-Containers用）
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs

@@ -1,5 +1,5 @@
 
-ARG TARGETARCH=amd64
+ARG TARGETARCH
 FROM debian:bullseye-slim
 
 SHELL ["/bin/bash", "-c"]
@@ -31,7 +31,10 @@ RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Flutter SDKのインストール (architecture自動判定)
 ENV FLUTTER_ROOT=/opt/flutter
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
+# ARCH 自動判定 (TARGETARCH が未指定の場合は uname -m を利用して正規化)
+RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
+    if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
+    if [ "$ARCH" = "arm64" ]; then \
         FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_arm64_3.13.9-stable.tar.xz"; \
     else \
         FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"; \
@@ -43,18 +46,29 @@ ENV PATH=$FLUTTER_ROOT/bin:$PATH
 
 
 # Javaのインストール (architecture自動判定)
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-        JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_aarch64; \
+ARG TARGETARCH
+RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
+    if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
+    if [ "$ARCH" = "arm64" ]; then \
         JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_aarch64.zip"; \
     else \
-        JAVA_HOME=/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64; \
         JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip"; \
     fi && \
     wget -P /tmp/ "$JAVA_URL" && \
     unzip -o /tmp/$(basename "$JAVA_URL") -d /opt && \
-    rm -rf /tmp/$(basename "$JAVA_URL") && \
-    echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile.d/java_home.sh && \
-    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile.d/java_home.sh
+    rm -rf /tmp/$(basename "$JAVA_URL")
+
+# JAVA_HOME を永続化（/opt/jdk シンボリックリンクに集約）
+RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
+    if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
+    if [ "$ARCH" = "arm64" ]; then \
+        JDIR=$(echo /opt/zulu*-linux_aarch64); \
+    else \
+        JDIR=$(echo /opt/zulu*-linux_x64); \
+    fi && \
+    rm -f /opt/jdk && ln -s "$JDIR" /opt/jdk
+ENV JAVA_HOME=/opt/jdk
+ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Node.jsのインストール（VS Code Remote-Containers用）
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && apt-get install -y nodejs
@@ -87,13 +101,19 @@ WORKDIR /home/developer
 
 # Android SDK componentsのインストール (architecture自動判定)
 ENV ANDROID_SDK_ROOT=/opt/Android/sdk
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
+RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
+    if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
+    if [ "$ARCH" = "arm64" ]; then \
+        JAVA_HOME="/opt/zulu17.56.15-ca-jdk17.0.14-linux_aarch64"; \
         SYSIMG="system-images;android-34;google_apis;arm64-v8a"; \
     else \
+        JAVA_HOME="/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64"; \
         SYSIMG="system-images;android-34;google_apis;x86_64"; \
     fi && \
-    yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "$SYSIMG"
-RUN yes | /opt/flutter/bin/flutter doctor --android-licenses
+    export JAVA_HOME && export PATH=$JAVA_HOME/bin:$PATH && \
+    yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "$SYSIMG" && \
+    yes | /opt/flutter/bin/flutter doctor --android-licenses
+
 RUN /opt/flutter/bin/flutter config --no-analytics
 
 # Workspace フォルダ 

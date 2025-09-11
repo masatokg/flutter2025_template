@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   flutter:
     build:
@@ -14,5 +13,4 @@ services:
       - "5901:5901"
       - "5554:5554"
       - "5555:5555"
-    entrypoint:
-      - /home/developer/workspace/.devcontainer/start-vnc.sh
+    entrypoint: [ "sh", "/home/developer/workspace/.devcontainer/start-vnc.sh" ]

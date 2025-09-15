@@ -1,5 +1,5 @@
 {
-  "name": "debian_flutter",
+  "name": "Flutter Project",
   "workspaceFolder": "/home/developer/workspace",
   "dockerComposeFile": [
     "docker-compose.yml"
@@ -30,5 +30,6 @@
       ]
     }
   },
-  "postCreateCommand": "yes | /opt/flutter/bin/flutter doctor --android-licenses && /opt/flutter/bin/flutter config --no-analytics && cd my_app && flutter pub get && echo 'Flutter pub get at my_app complete'"
+  "postCreateCommand": "echo -e '\\n=====================\\nflutterプロジェクトフォルダを生成するには、以下のコマンドをターミナルで実行してください\\nflutter create \"プロジェクト名\"\\n「my_appプロジェクトを生成する」例） flutter create my_app\\nそして作成したプロジェクトフォルダへ移動して、flutter run コマンドでプロジェクトアプリを実行してください。\\ncd my_app\\nflutter run\\n=====================\\n'",
+  "remoteUser": "developer"
 }

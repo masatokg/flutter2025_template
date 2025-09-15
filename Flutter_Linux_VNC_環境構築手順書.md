@@ -47,7 +47,21 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 2. インストーラー（.dmg）を開き、アプリケーションフォルダにドラッグ
 3. Docker Desktopを起動
 
----
+#### M1 Mac（Apple Silicon）の場合の追加設定
+M1 Mac環境でFlutter開発環境を最適に動作させるため、以下の設定を行ってください：
+
+**Rosetta 2エミュレーションの有効化**
+1. Docker Desktop → Settings（歯車アイコン）→ General
+2. 「Use Rosetta for x86/amd64 emulation on Apple Silicon」にチェックを入れる
+3. 「Apply & Restart」をクリック
+4. これにより、x86_64 Flutterバイナリの実行性能が大幅に向上します
+
+**リソース割り当ての調整**
+1. Docker Desktop → Settings → Resources
+2. 以下の設定を推奨します：
+   - **CPU**: 最低4コア（8コア以上が理想）
+   - **Memory**: 最低8GB（16GB以上が理想）
+   - **Disk**: 最低32GB
 
 ## 3. TigerVNCクライアントのインストール
 ### Windowsの場合
@@ -107,7 +121,6 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 2. インストーラーを実行し、画面の指示に従ってインストール
 
 ---
-
 ## 7. リポジトリのクローン（Githubリポジトリ画面→Github Desktop）
 1. パソコンからWebブラウザで対象のGithubリポジトリ（例：https://github.com/masatokg/container2025_test ) を開く
 2. 緑色の「Code」ボタンをクリック
@@ -115,8 +128,15 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 4. Github Desktopアプリが自動で起動し、リポジトリのコピーを配置したいクローン先のフォルダを選択して「Clone」をクリック
 5. クローンが完了したら、ローカルPC上にリポジトリが作成されます
 
----
+### プロジェクト用の設定変更(Apple Silicon Mac の場合)**
+1. プロジェクトの `.devcontainer/.env` ファイルを編集
+2. `ARCH=amd64` を `ARCH=arm64` に変更
+```
+ARCH=arm64
+CONTAINER_NAME=CONTAINER_2025SD4_v01
+```
 
+---
 ## 8. Dev Containerの起動
 1. Github DesktopでクローンしたフォルダをVS Codeで開く（「Open in Visual Studio Code」ボタンを利用）
 2. コマンドパレット（Ctrl+Shift+P）で「Dev Containers: Reopen in Container」を選択
@@ -124,9 +144,10 @@ Docker DesktopでLinuxコンテナを利用するには、WSL2（Windows Subsyst
 
 ---
 
-## 9. Flutterアプリの起動
-1. VS Codeのターミナルで以下を実行
+## 9. Flutterプロジェクトの生成とアプリの起動
+1. VS Codeのターミナルで以下を実行 (プロジェクト名 = my_appの場合の例)
 ```
+flutter create my_app 
 cd my_app
 flutter run
 ```
@@ -174,6 +195,9 @@ Flutterアプリのデバッグやプロファイリングが可能です。
 - Dev Containers: Reopen in Container でエラーが発生する場合:
   - キャッシュが影響している場合があります。コマンドパレット（Ctrl+Shift+P）で「Dev Containers: Rebuild and Reopen in Container」を選択し、キャッシュなしで再ビルドを試してください。
 
+- Dockerコンテナの容量のクリーンアップ:
+  - コンテナをたくさん作成したり、作成に失敗を重ねると、不要なコンテナが増えてPCのディスク容量が不足します。以下の手順をみて不要な容量を削除してください。
+  - https://fern-lint-66e.notion.site/Flutter-Linux-GUI-VNC-25e0cb61616b80e694ccfd9d6931fa56?source=copy_link
 ---
 
 ## 13. 補足

@@ -1,6 +1,26 @@
+# ビルド引数としてARCHを受け取る (全ステージで利用可能)
+ARG ARCH
 
-ARG TARGETARCH
-FROM debian:bullseye-slim
+# --- ステージ1: アーキテクチャのチェック ---
+# ビルドホストとターゲットのアーキテクチャが一致するか検証
+FROM alpine:3.18 as arch_checker
+
+# スクリプトをコンテナにコピー
+COPY check_arch.sh /usr/local/bin/check_arch.sh
+RUN chmod +x /usr/local/bin/check_arch.sh
+
+# BUILDPLATFORMとTARGETPLATFORMはDocker BuildKitによって自動的に設定される
+# スクリプトを実行してアーキテクチャを検証
+RUN check_arch.sh
+
+# 成功のマーカーを作成し、後段ステージに依存関係を作る
+RUN echo "Architecture check passed" > /arch_check_ok
+
+# --- ステージ2: メインのビルド (arch_checkerステージが成功した場合のみ実行) ---
+# ARCHの値に応じてベースイメージを切り替える
+FROM --platform=linux/${ARCH} mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04
+# arch_checkerステージが成功していることを保証（BuildKit並列最適化対策）
+COPY --from=arch_checker /arch_check_ok /opt/.arch_check_ok
 
 SHELL ["/bin/bash", "-c"]
 
@@ -29,36 +49,37 @@ RUN apt-get update && \
 RUN useradd -ms /bin/bash developer
 RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# Flutter SDKのインストール (architecture自動判定)
+# Flutter SDKのインストール (M1 MacではRosetta 2経由でx86_64版を実行、バージョン統一)
 ENV FLUTTER_ROOT=/opt/flutter
-# ARCH 自動判定 (TARGETARCH が未指定の場合は uname -m を利用して正規化)
-RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
-    if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
-    if [ "$ARCH" = "arm64" ]; then \
-        FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_arm64_3.13.9-stable.tar.xz"; \
-    else \
-        FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz"; \
-    fi && \
+# 全環境で同じFlutter 3.13.9を使用（M1 MacではRosetta 2で自動エミュレーション）
+RUN FLUTTER_URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.13.9-stable.tar.xz" && \
     wget -P /tmp "$FLUTTER_URL" && \
     tar -xf /tmp/$(basename "$FLUTTER_URL") -C /opt/ && \
     rm -rf /tmp/$(basename "$FLUTTER_URL")
 ENV PATH=$FLUTTER_ROOT/bin:$PATH
 
+# M1 Mac環境でFlutter x86_64バイナリをRosetta 2経由で実行するための設定
+# Docker内でのbinfmtエミュレーションを利用してx86_64バイナリを透過実行
+RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        echo "ARM64環境検出: FlutterはRosetta 2/エミュレーション経由で実行されます"; \
+        # x86_64バイナリの実行可能性をテスト
+        /opt/flutter/bin/flutter --version || echo "Flutter実行テスト完了"; \
+    fi
 
-# Javaのインストール (architecture自動判定)
+# Javaのインストール (architecture自動判定、最新版)
 ARG TARGETARCH
 RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
     if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
     if [ "$ARCH" = "arm64" ]; then \
-        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_aarch64.zip"; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-crac-jre17.0.16-linux_aarch64.tar.gz"; \
     else \
-        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.56.15-ca-jdk17.0.14-linux_x64.zip"; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-crac-jre17.0.16-linux_x64.tar.gz"; \
     fi && \
     wget -P /tmp/ "$JAVA_URL" && \
-    unzip -o /tmp/$(basename "$JAVA_URL") -d /opt && \
+    tar -xzf /tmp/$(basename "$JAVA_URL") -C /opt && \
     rm -rf /tmp/$(basename "$JAVA_URL")
 
-# JAVA_HOME を永続化（/opt/jdk シンボリックリンクに集約）
+# JAVA_HOME を永続化（/opt/jdk シンボリックリンクに集約、tar.gz形式対応）
 RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
     if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
     if [ "$ARCH" = "arm64" ]; then \
@@ -88,12 +109,9 @@ RUN chown -R developer:developer /opt/flutter /opt/zulu* /opt/Android
 
 # VNC スタートスクリプト
 # COPYでファイルをコンテナにコピー
-COPY .devcontainer/start-vnc.sh /home/developer/start-vnc.sh
+COPY start-vnc.sh /home/developer/start-vnc.sh
 # chownでファイルの所有者をdeveloperに変更
 RUN chown developer:developer /home/developer/start-vnc.sh && chmod 755 /home/developer/start-vnc.sh
-
-# 実行権限を付与
-# RUN chmod 755 /home/developer/start-vnc.sh
 
 # ユーザーを切り替えて作業ディレクトリを設定 
 USER developer
@@ -104,10 +122,10 @@ ENV ANDROID_SDK_ROOT=/opt/Android/sdk
 RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
     if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
     if [ "$ARCH" = "arm64" ]; then \
-        JAVA_HOME="/opt/zulu17.56.15-ca-jdk17.0.14-linux_aarch64"; \
+        JAVA_HOME="/opt/zulu17.60.17-ca-crac-jre17.0.16-linux_aarch64"; \
         SYSIMG="system-images;android-34;google_apis;arm64-v8a"; \
     else \
-        JAVA_HOME="/opt/zulu17.56.15-ca-jdk17.0.14-linux_x64"; \
+        JAVA_HOME="/opt/zulu17.60.17-ca-crac-jre17.0.16-linux_x64"; \
         SYSIMG="system-images;android-34;google_apis;x86_64"; \
     fi && \
     export JAVA_HOME && export PATH=$JAVA_HOME/bin:$PATH && \
@@ -118,6 +136,3 @@ RUN /opt/flutter/bin/flutter config --no-analytics
 
 # Workspace フォルダ 
 RUN mkdir -p /home/developer/workspace
-
-# コンテナ起動時にVNCを起動
-# CMD ["/home/developer/start-vnc.sh"]

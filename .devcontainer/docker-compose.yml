@@ -12,7 +12,7 @@ services:
         - ARCH=${ARCH}
     volumes:
       - ..:/home/developer/workspace:cached
-    command: sleep infinity
+    command: /home/developer/workspace/.devcontainer/start-vnc.sh
     ports:
       - "5901:5901"
       - "5554:5554"
@@ -20,4 +20,4 @@ services:
     user: "developer"
     tty: true
     # コンテナ起動時にVNCを起動
-    entrypoint: sh -c "sleep infinity"
+    # entrypoint: sh -c "sleep infinity"

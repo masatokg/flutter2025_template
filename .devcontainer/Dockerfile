@@ -118,17 +118,13 @@ USER developer
 WORKDIR /home/developer
 
 # Android SDK componentsのインストール (architecture自動判定)
-ENV ANDROID_SDK_ROOT=/opt/Android/sdk
 RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
     if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
     if [ "$ARCH" = "arm64" ]; then \
-        JAVA_HOME="/opt/zulu17.60.17-ca-crac-jre17.0.16-linux_aarch64"; \
         SYSIMG="system-images;android-34;google_apis;arm64-v8a"; \
     else \
-        JAVA_HOME="/opt/zulu17.60.17-ca-crac-jre17.0.16-linux_x64"; \
         SYSIMG="system-images;android-34;google_apis;x86_64"; \
     fi && \
-    export JAVA_HOME && export PATH=$JAVA_HOME/bin:$PATH && \
     yes | sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;33.0.1" "emulator" "$SYSIMG" && \
     yes | /opt/flutter/bin/flutter doctor --android-licenses
 

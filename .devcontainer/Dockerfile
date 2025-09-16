@@ -3,7 +3,7 @@ ARG ARCH
 
 # --- ステージ1: アーキテクチャのチェック ---
 # ビルドホストとターゲットのアーキテクチャが一致するか検証
-FROM alpine:3.18 as arch_checker
+FROM alpine:3.18 AS arch_checker
 
 # スクリプトをコンテナにコピー
 COPY check_arch.sh /usr/local/bin/check_arch.sh

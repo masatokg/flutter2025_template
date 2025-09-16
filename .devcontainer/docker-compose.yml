@@ -4,6 +4,9 @@ services:
     container_name: flutter_devcontainer_${CONTAINER_NAME}
     # M1 Mac環境ではARM64ベースでx86_64バイナリをRosetta 2経由で実行
     platform: linux/${ARCH}
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     build:
       context: .
       dockerfile: Dockerfile

@@ -9,8 +9,8 @@ sleep 2
 
 # Xvfbが生成したcookieを抽出し、ユーザーのホームディレクトリに書き出す
 XAUTH=/home/developer/.Xauthority
-xauth extract $XAUTH :1
-# export XAUTHORITY=$XAUTH # この行はDockerfileのENVで設定するため不要
+touch $XAUTH
+xauth add :1 . $(mcookie)
 
 # DBus デーモン起動
 eval $(dbus-launch --sh-syntax)

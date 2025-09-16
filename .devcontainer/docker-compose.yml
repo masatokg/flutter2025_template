@@ -20,4 +20,4 @@ services:
     user: "developer"
     tty: true
     # コンテナ起動時にVNCを起動
-    entrypoint: [ "sh", "/home/developer/workspace/.devcontainer/start-vnc.sh" ]
+    entrypoint: sh -c "sleep infinity"

@@ -35,14 +35,17 @@ RUN apt-get update && \
     update-locale LANG=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
+ENV DISPLAY=:1
+ENV XAUTHORITY=/home/developer/.Xauthority
 
 # 基本パッケージ + GUI + VNC + Android Emulator
 RUN apt-get update && \
     apt-get install -y \
         curl git wget unzip zip xz-utils sudo cmake ninja-build build-essential clang pkg-config \
-    libgtk-3-dev libx11-dev libglfw3-dev xauth \
+        libgtk-3-dev libx11-dev libglfw3-dev xauth \
         xfce4 xfce4-goodies x11vnc xvfb \
         qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xserver-xorg-video-dummy && \
+    apt-get remove -y xfce4-power-manager && \
     rm -rf /var/lib/apt/lists/*
 
 # 開発者ユーザー作成
@@ -71,9 +74,9 @@ ARG TARGETARCH
 RUN ARCH="${TARGETARCH:-$(uname -m)}"; \
     if [ "$ARCH" = "aarch64" ]; then ARCH=arm64; fi; \
     if [ "$ARCH" = "arm64" ]; then \
-        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-crac-jre17.0.16-linux_aarch64.tar.gz"; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.48.15-ca-jdk17.0.10-linux_aarch64.tar.gz"; \
     else \
-        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.60.17-ca-crac-jre17.0.16-linux_x64.tar.gz"; \
+        JAVA_URL="https://cdn.azul.com/zulu/bin/zulu17.48.15-ca-jdk17.0.10-linux_x64.tar.gz"; \
     fi && \
     wget -P /tmp/ "$JAVA_URL" && \
     tar -xzf /tmp/$(basename "$JAVA_URL") -C /opt && \

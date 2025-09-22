@@ -4,6 +4,9 @@ services:
     container_name: flutter_devcontainer_${CONTAINER_NAME}
     # M1 Mac環境ではARM64ベースでx86_64バイナリをRosetta 2経由で実行
     platform: linux/${ARCH}
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,7 +15,7 @@ services:
         - ARCH=${ARCH}
     volumes:
       - ..:/home/developer/workspace:cached
-    command: sleep infinity
+    command: /home/developer/workspace/.devcontainer/start-vnc.sh
     ports:
       - "5901:5901"
       - "5554:5554"
@@ -20,4 +23,4 @@ services:
     user: "developer"
     tty: true
     # コンテナ起動時にVNCを起動
-    entrypoint: [ "sh", "/home/developer/workspace/.devcontainer/start-vnc.sh" ]
+    # entrypoint: sh -c "sleep infinity"

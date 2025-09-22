@@ -1,6 +1,6 @@
 {
   "name": "Flutter Project",
-  "workspaceFolder": "/home/developer/workspace",
+   "postCreateCommand": "/home/developer/workspace/.devcontainer/start-vnc.sh","workspaceFolder": "/home/developer/workspace",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],

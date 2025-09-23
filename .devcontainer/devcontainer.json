@@ -1,6 +1,7 @@
 {
   "name": "Flutter Project",
-   "postCreateCommand": "/home/developer/workspace/.devcontainer/start-vnc.sh","workspaceFolder": "/home/developer/workspace",
+   "postCreateCommand": "/home/developer/workspace/.devcontainer/start-vnc.sh; echo -e '\\n=====================\\nLinuxデスクトップFlutterアプリの作成・実行手順\\n1. flutter create <プロジェクト名>\\n2. cd <プロジェクト名>\\n3. flutter run\\n=====================\\n'",
+  "workspaceFolder": "/home/developer/workspace",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],
@@ -30,6 +31,5 @@
       ]
     }
   },
-  "postCreateCommand": "echo -e '\\n=====================\\nflutterプロジェクトフォルダを生成するには、以下のコマンドをターミナルで実行してください\\nflutter create \"プロジェクト名\"\\n「my_appプロジェクトを生成する」例） flutter create my_app\\nそして作成したプロジェクトフォルダへ移動して、flutter run コマンドでプロジェクトアプリを実行してください。\\ncd my_app\\nflutter run\\n=====================\\n'",
   "remoteUser": "developer"
 }

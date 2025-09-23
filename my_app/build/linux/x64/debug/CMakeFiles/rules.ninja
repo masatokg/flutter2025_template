@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake --regenerate-during-build -S/workspaces/my_app/linux -B/workspaces/my_app/build/linux/x64/debug
+  command = /usr/bin/cmake --regenerate-during-build -S/home/developer/workspace/my_app/linux -B/home/developer/workspace/my_app/build/linux/x64/debug
   description = Re-running CMake...
   generator = 1
 

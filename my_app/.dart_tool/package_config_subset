@@ -82,6 +82,10 @@ web
 3.1
 file:///home/developer/.pub-cache/hosted/pub.dev/web-0.1.4-beta/
 file:///home/developer/.pub-cache/hosted/pub.dev/web-0.1.4-beta/lib/
+my_app
+3.1
+file:///home/developer/workspace/my_app/
+file:///home/developer/workspace/my_app/lib/
 sky_engine
 3.0
 file:///opt/flutter/bin/cache/pkg/sky_engine/
@@ -94,8 +98,4 @@ flutter_test
 3.0
 file:///opt/flutter/packages/flutter_test/
 file:///opt/flutter/packages/flutter_test/lib/
-my_app
-3.1
-file:///workspaces/my_app/
-file:///workspaces/my_app/lib/
 2

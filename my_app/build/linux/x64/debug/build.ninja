@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /workspaces/my_app/build/linux/x64/debug/
+cmake_ninja_workdir = /home/developer/workspace/my_app/build/linux/x64/debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target my_app
 
@@ -49,27 +49,27 @@ cmake_ninja_workdir = /workspaces/my_app/build/linux/x64/debug/
 
 build cmake_object_order_depends_target_my_app: phony || flutter/flutter_assemble
 
-build CMakeFiles/my_app.dir/main.cc.o: CXX_COMPILER__my_app_Debug /workspaces/my_app/linux/main.cc || cmake_object_order_depends_target_my_app
+build CMakeFiles/my_app.dir/main.cc.o: CXX_COMPILER__my_app_Debug /home/developer/workspace/my_app/linux/main.cc || cmake_object_order_depends_target_my_app
   DEFINES = -DAPPLICATION_ID=\"com.example.my_app\"
   DEP_FILE = CMakeFiles/my_app.dir/main.cc.o.d
   FLAGS = -g -Wall -Werror -pthread
-  INCLUDES = -I/workspaces/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
+  INCLUDES = -I/home/developer/workspace/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
   OBJECT_DIR = CMakeFiles/my_app.dir
   OBJECT_FILE_DIR = CMakeFiles/my_app.dir
 
-build CMakeFiles/my_app.dir/my_application.cc.o: CXX_COMPILER__my_app_Debug /workspaces/my_app/linux/my_application.cc || cmake_object_order_depends_target_my_app
+build CMakeFiles/my_app.dir/my_application.cc.o: CXX_COMPILER__my_app_Debug /home/developer/workspace/my_app/linux/my_application.cc || cmake_object_order_depends_target_my_app
   DEFINES = -DAPPLICATION_ID=\"com.example.my_app\"
   DEP_FILE = CMakeFiles/my_app.dir/my_application.cc.o.d
   FLAGS = -g -Wall -Werror -pthread
-  INCLUDES = -I/workspaces/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
+  INCLUDES = -I/home/developer/workspace/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
   OBJECT_DIR = CMakeFiles/my_app.dir
   OBJECT_FILE_DIR = CMakeFiles/my_app.dir
 
-build CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPILER__my_app_Debug /workspaces/my_app/linux/flutter/generated_plugin_registrant.cc || cmake_object_order_depends_target_my_app
+build CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPILER__my_app_Debug /home/developer/workspace/my_app/linux/flutter/generated_plugin_registrant.cc || cmake_object_order_depends_target_my_app
   DEFINES = -DAPPLICATION_ID=\"com.example.my_app\"
   DEP_FILE = CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o.d
   FLAGS = -g -Wall -Werror -pthread
-  INCLUDES = -I/workspaces/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
+  INCLUDES = -I/home/developer/workspace/my_app/linux/flutter/ephemeral -isystem /usr/include/gtk-3.0 -isystem /usr/include/at-spi2-atk/2.0 -isystem /usr/include/at-spi-2.0 -isystem /usr/include/dbus-1.0 -isystem /usr/lib/x86_64-linux-gnu/dbus-1.0/include -isystem /usr/include/gio-unix-2.0 -isystem /usr/include/cairo -isystem /usr/include/pango-1.0 -isystem /usr/include/harfbuzz -isystem /usr/include/fribidi -isystem /usr/include/atk-1.0 -isystem /usr/include/pixman-1 -isystem /usr/include/uuid -isystem /usr/include/freetype2 -isystem /usr/include/gdk-pixbuf-2.0 -isystem /usr/include/libpng16 -isystem /usr/include/libmount -isystem /usr/include/blkid -isystem /usr/include/glib-2.0 -isystem /usr/lib/x86_64-linux-gnu/glib-2.0/include
   OBJECT_DIR = CMakeFiles/my_app.dir
   OBJECT_FILE_DIR = CMakeFiles/my_app.dir/flutter
 
@@ -81,9 +81,9 @@ build CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o: CXX_COMPIL
 #############################################
 # Link the executable intermediates_do_not_run/my_app
 
-build intermediates_do_not_run/my_app: CXX_EXECUTABLE_LINKER__my_app_Debug CMakeFiles/my_app.dir/main.cc.o CMakeFiles/my_app.dir/my_application.cc.o CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o | /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
+build intermediates_do_not_run/my_app: CXX_EXECUTABLE_LINKER__my_app_Debug CMakeFiles/my_app.dir/main.cc.o CMakeFiles/my_app.dir/my_application.cc.o CMakeFiles/my_app.dir/flutter/generated_plugin_registrant.cc.o | /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /usr/lib/x86_64-linux-gnu/libgtk-3.so /usr/lib/x86_64-linux-gnu/libgdk-3.so /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so /usr/lib/x86_64-linux-gnu/libpango-1.0.so /usr/lib/x86_64-linux-gnu/libharfbuzz.so /usr/lib/x86_64-linux-gnu/libatk-1.0.so /usr/lib/x86_64-linux-gnu/libcairo-gobject.so /usr/lib/x86_64-linux-gnu/libcairo.so /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so /usr/lib/x86_64-linux-gnu/libgio-2.0.so /usr/lib/x86_64-linux-gnu/libgobject-2.0.so /usr/lib/x86_64-linux-gnu/libglib-2.0.so || flutter/flutter_assemble
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/workspaces/my_app/linux/flutter/ephemeral:  /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
+  LINK_LIBRARIES = -Wl,-rpath,/home/developer/workspace/my_app/linux/flutter/ephemeral:  /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so  /usr/lib/x86_64-linux-gnu/libgtk-3.so  /usr/lib/x86_64-linux-gnu/libgdk-3.so  /usr/lib/x86_64-linux-gnu/libpangocairo-1.0.so  /usr/lib/x86_64-linux-gnu/libpango-1.0.so  /usr/lib/x86_64-linux-gnu/libharfbuzz.so  /usr/lib/x86_64-linux-gnu/libatk-1.0.so  /usr/lib/x86_64-linux-gnu/libcairo-gobject.so  /usr/lib/x86_64-linux-gnu/libcairo.so  /usr/lib/x86_64-linux-gnu/libgdk_pixbuf-2.0.so  /usr/lib/x86_64-linux-gnu/libgio-2.0.so  /usr/lib/x86_64-linux-gnu/libgobject-2.0.so  /usr/lib/x86_64-linux-gnu/libglib-2.0.so
   OBJECT_DIR = CMakeFiles/my_app.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -95,7 +95,7 @@ build intermediates_do_not_run/my_app: CXX_EXECUTABLE_LINKER__my_app_Debug CMake
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -106,7 +106,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug && /usr/bin/cmake --regenerate-during-build -S/workspaces/my_app/linux -B/workspaces/my_app/build/linux/x64/debug
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug && /usr/bin/cmake --regenerate-during-build -S/home/developer/workspace/my_app/linux -B/home/developer/workspace/my_app/build/linux/x64/debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -124,7 +124,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles/install.util: CUSTOM_COMMAND all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug && /usr/bin/cmake -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug && /usr/bin/cmake -P cmake_install.cmake
   DESC = Install the project...
   pool = console
   restat = 1
@@ -136,7 +136,7 @@ build install: phony CMakeFiles/install.util
 # Utility command for install/local
 
 build CMakeFiles/install/local.util: CUSTOM_COMMAND all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -148,7 +148,7 @@ build install/local: phony CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -157,21 +157,21 @@ build install/strip: phony CMakeFiles/install/strip.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# /workspaces/my_app/linux/CMakeLists.txt
+# /home/developer/workspace/my_app/linux/CMakeLists.txt
 # =============================================================================
 
 
 #############################################
 # Utility command for flutter_assemble
 
-build flutter/flutter_assemble: phony flutter/CMakeFiles/flutter_assemble /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h flutter/_phony_
+build flutter/flutter_assemble: phony flutter/CMakeFiles/flutter_assemble /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h flutter/_phony_
 
 
 #############################################
 # Utility command for edit_cache
 
 build flutter/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -182,7 +182,7 @@ build flutter/edit_cache: phony flutter/CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build flutter/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake --regenerate-during-build -S/workspaces/my_app/linux -B/workspaces/my_app/build/linux/x64/debug
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake --regenerate-during-build -S/home/developer/workspace/my_app/linux -B/home/developer/workspace/my_app/build/linux/x64/debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -200,7 +200,7 @@ build flutter/list_install_components: phony
 # Utility command for install
 
 build flutter/CMakeFiles/install.util: CUSTOM_COMMAND flutter/all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -P cmake_install.cmake
   DESC = Install the project...
   pool = console
   restat = 1
@@ -212,7 +212,7 @@ build flutter/install: phony flutter/CMakeFiles/install.util
 # Utility command for install/local
 
 build flutter/CMakeFiles/install/local.util: CUSTOM_COMMAND flutter/all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -224,7 +224,7 @@ build flutter/install/local: phony flutter/CMakeFiles/install/local.util
 # Utility command for install/strip
 
 build flutter/CMakeFiles/install/strip.util: CUSTOM_COMMAND flutter/all
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
   DESC = Installing the project stripped...
   pool = console
   restat = 1
@@ -235,15 +235,15 @@ build flutter/install/strip: phony flutter/CMakeFiles/install/strip.util
 #############################################
 # Phony custom command for flutter/CMakeFiles/flutter_assemble
 
-build flutter/CMakeFiles/flutter_assemble | ${cmake_ninja_workdir}flutter/CMakeFiles/flutter_assemble: phony /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h
+build flutter/CMakeFiles/flutter_assemble | ${cmake_ninja_workdir}flutter/CMakeFiles/flutter_assemble: phony /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h
 
 
 #############################################
-# Custom command for /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so
+# Custom command for /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so
 
-build /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h flutter/_phony_ | ${cmake_ninja_workdir}flutter/_phony_: CUSTOM_COMMAND
-  COMMAND = cd /workspaces/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -E env FLUTTER_ROOT=/opt/flutter PROJECT_DIR=/workspaces/my_app DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC8wNTQ1Zjg3MDVkZjMwMTg3N2Q3ODcxMDdiYWMxYTZlOWZjOWVlMWFkLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=/workspaces/my_app/.dart_tool/package_config.json FLUTTER_TARGET=/workspaces/my_app/lib/main.dart /opt/flutter/packages/flutter_tools/bin/tool_backend.sh linux-x64 Debug
-  DESC = Generating /workspaces/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h, /workspaces/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h, _phony_
+build /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h flutter/_phony_ | ${cmake_ninja_workdir}flutter/_phony_: CUSTOM_COMMAND
+  COMMAND = cd /home/developer/workspace/my_app/build/linux/x64/debug/flutter && /usr/bin/cmake -E env FLUTTER_ROOT=/opt/flutter PROJECT_DIR=/home/developer/workspace/my_app DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC8wNTQ1Zjg3MDVkZjMwMTg3N2Q3ODcxMDdiYWMxYTZlOWZjOWVlMWFkLw== DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=/home/developer/workspace/my_app/.dart_tool/package_config.json FLUTTER_TARGET=/home/developer/workspace/my_app/lib/main.dart /opt/flutter/packages/flutter_tools/bin/tool_backend.sh linux-x64 Debug
+  DESC = Generating /home/developer/workspace/my_app/linux/flutter/ephemeral/libflutter_linux_gtk.so, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_basic_message_channel.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_binary_messenger.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_dart_project.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_engine.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_message_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_json_method_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_message_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_call.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_channel.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_method_response.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registrar.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_plugin_registry.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_message_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_standard_method_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_string_codec.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_value.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/fl_view.h, /home/developer/workspace/my_app/linux/flutter/ephemeral/flutter_linux/flutter_linux.h, _phony_
   restat = 1
 
 # =============================================================================
@@ -259,14 +259,14 @@ build my_app: phony intermediates_do_not_run/my_app
 # =============================================================================
 
 #############################################
-# Folder: /workspaces/my_app/build/linux/x64/debug
+# Folder: /home/developer/workspace/my_app/build/linux/x64/debug
 
 build all: phony intermediates_do_not_run/my_app flutter/all
 
 # =============================================================================
 
 #############################################
-# Folder: /workspaces/my_app/build/linux/x64/debug/flutter
+# Folder: /home/developer/workspace/my_app/build/linux/x64/debug/flutter
 
 build flutter/all: phony
 
@@ -277,14 +277,14 @@ build flutter/all: phony
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /workspaces/my_app/linux/CMakeLists.txt /workspaces/my_app/linux/flutter/CMakeLists.txt /workspaces/my_app/linux/flutter/ephemeral/generated_config.cmake /workspaces/my_app/linux/flutter/generated_plugins.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/developer/workspace/my_app/linux/CMakeLists.txt /home/developer/workspace/my_app/linux/flutter/CMakeLists.txt /home/developer/workspace/my_app/linux/flutter/ephemeral/generated_config.cmake /home/developer/workspace/my_app/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake /workspaces/my_app/linux/CMakeLists.txt /workspaces/my_app/linux/flutter/CMakeLists.txt /workspaces/my_app/linux/flutter/ephemeral/generated_config.cmake /workspaces/my_app/linux/flutter/generated_plugins.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
+build /home/developer/workspace/my_app/linux/CMakeLists.txt /home/developer/workspace/my_app/linux/flutter/CMakeLists.txt /home/developer/workspace/my_app/linux/flutter/ephemeral/generated_config.cmake /home/developer/workspace/my_app/linux/flutter/generated_plugins.cmake /usr/share/cmake-3.22/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.22/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Compiler/Clang.cmake /usr/share/cmake-3.22/Modules/Compiler/GNU.cmake /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.22/Modules/FindPackageMessage.cmake /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-Clang-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake-3.22/Modules/Platform/Linux-GNU.cmake /usr/share/cmake-3.22/Modules/Platform/Linux.cmake /usr/share/cmake-3.22/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.22.1/CMakeCXXCompiler.cmake CMakeFiles/3.22.1/CMakeSystem.cmake: phony
 
 
 #############################################

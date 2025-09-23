@@ -22,26 +22,22 @@ startxfce4 &
 x11vnc -display :1 -rfbport 5901 -nopw -forever -shared -bg -o /tmp/x11vnc.log -auth $XAUTH
 echo "VNC server started on display :1 (port 5901)"
 
-# Android AVDの自動作成（初回のみ, アーキテクチャ自動判定）
-if [ ! -d "$HOME/.android/avd/Pixel_API_34.avd" ]; then
-    ARCH=$(uname -m)
-    if [ "$ARCH" = "aarch64" ]; then
-        SYSIMG="system-images;android-34;google_apis;arm64-v8a"
-    else
-        SYSIMG="system-images;android-34;google_apis;x86_64"
-    fi
-    echo "no" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/avdmanager create avd -n Pixel_API_34 -k "$SYSIMG" --device "pixel"
-fi
+# スクリーンセーバー・画面ロック無効化
+xfconf-query -c xfce4-session -p /screensaver/enabled -t bool -s false
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/dpms-enabled -t bool -s false
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/blank-on-ac -t int -s 0
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/blank-on-battery -t int -s 0
+pkill xfce4-screensaver || true
+pkill light-locker || true
 
-# Android Emulator をバックグラウンド起動
-echo "Starting Android Emulator..."
-# In most Docker-on-Mac/Windows cases, KVM is unavailable; disable accel to avoid failures
-$ANDROID_SDK_ROOT/emulator/emulator -avd Pixel_API_34 -noaudio -no-boot-anim -gpu swiftshader_indirect -no-snapshot -accel off &
+echo "====================="
+echo "このターミナルは閉じないでください。"
+echo "操作するには、新しいターミナルを開いてくさださい。"
+echo "flutterプロジェクトフォルダを生成するには、以下のコマンドをターミナルで実行してください\\nflutter create \"プロジェクト名\""
+echo "「my_appプロジェクトを生成する」例） flutter create my_app"
+echo "そして作成したプロジェクトフォルダへ移動して、flutter run コマンドでプロジェクトアプリを実行してください。"
+echo "cd my_app"
+echo "flutter run"
+echo "====================="
 
-# 全てのバックグラウンドプロセスが起動するのを待つ
-sleep 10
-
-# 無限ループでシェルをアクティブに保つ
-while true; do
-    tail -f /dev/null & wait ${!}
-done
+sleep infinity

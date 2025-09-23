@@ -1,0 +1,11 @@
+/workspaces/my_app/build/linux/x64/debug/bundle/my_app
+/workspaces/my_app/build/linux/x64/debug/bundle/data/icudtl.dat
+/workspaces/my_app/build/linux/x64/debug/bundle/lib/libflutter_linux_gtk.so
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.bin
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/AssetManifest.json
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/FontManifest.json
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/kernel_blob.bin
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/NOTICES.Z
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/shaders/ink_sparkle.frag
+/workspaces/my_app/build/linux/x64/debug/bundle/data/flutter_assets/version.json

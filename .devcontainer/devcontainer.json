@@ -32,6 +32,6 @@
     }
   },
   "remoteUser": "developer",
-  "initializeCommand": ".devcontainer/compose-up.sh || true && docker rm -f flutter2025_template || true",
-  "postStartCommand": "pkill -f 'Xvfb :1' || true && pkill -f 'xfwm4' || true && pkill -f 'x11vnc' || true && [ -f /tmp/.X1-lock ] && rm -f /tmp/.X1-lock || true"
+  "initializeCommand": "docker rm -f flutter2025_template || true",
+  "postStartCommand": "/bin/bash /workspaces/flutter2025_template/.devcontainer/compose-up.sh && pkill -f 'Xvfb :1' || true && pkill -f 'xfwm4' || true && pkill -f 'x11vnc' || true && [ -f /tmp/.X1-lock ] && rm -f /tmp/.X1-lock || true"
 }

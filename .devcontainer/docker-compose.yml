@@ -15,7 +15,7 @@ services:
         - ARCH=${ARCH}
     volumes:
       - ..:/home/developer/workspace:cached
-    command: /home/developer/workspace/.devcontainer/start-vnc.sh
+    command: /home/developer/workspace/.devcontainer/start-vnc.sh > /home/developer/workspace/start-vnc.log 2>&1
     ports:
       - "5901:5901"
     user: "developer"

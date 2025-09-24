@@ -30,14 +30,14 @@ fi
 CNAME="flutter_devcontainer_${CONTAINER_NAME}"
 
 # 同名コンテナの存在チェック
-if docker ps -a --format '{{.Names}}' | grep -Fxq "$CNAME"; then
-  echo "同名のコンテナ『${CNAME}』が既に存在します。起動を中断します。"
-  echo "対処方法:"
-  echo "  1) 既存コンテナを停止・削除する"
-  echo "     docker stop ${CNAME} && docker rm ${CNAME}"
-  echo "  2) .devcontainer/.env の CONTAINER_NAME を変更して再実行する"
-  exit 1
-fi
+# if docker ps -a --format '{{.Names}}' | grep -Fxq "$CNAME"; then
+#   echo "同名のコンテナ『${CNAME}』が既に存在します。起動を中断します。"
+#   echo "対処方法:"
+#   echo "  1) 既存コンテナを停止・削除する"
+#   echo "     docker stop ${CNAME} && docker rm ${CNAME}"
+#   echo "  2) .devcontainer/.env の CONTAINER_NAME を変更して再実行する"
+#   exit 1
+# fi
 
 # 事前チェック通過 → 起動
 exec docker compose up -d

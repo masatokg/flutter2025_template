@@ -1,6 +1,6 @@
 {
   "name": "Flutter Project",
-   "postCreateCommand": "/home/developer/workspace/.devcontainer/start-vnc.sh; echo -e '\\n=====================\\nLinuxデスクトップFlutterアプリの作成・実行手順\\n1. flutter create <プロジェクト名>\\n2. cd <プロジェクト名>\\n3. flutter run\\n=====================\\n'",
+  "postCreateCommand": "docker rm -f flutter2025_template || true; /home/developer/workspace/.devcontainer/start-vnc.sh; echo -e '\\n=====================\\nLinuxデスクトップFlutterアプリの作成・実行手順\\n1. flutter create <プロジェクト名>\\n2. cd <プロジェクト名>\\n3. flutter run\\n=====================\\n'",
   "workspaceFolder": "/home/developer/workspace",
   "dockerComposeFile": [
     "docker-compose.yml"

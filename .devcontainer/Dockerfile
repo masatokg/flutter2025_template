@@ -12,6 +12,17 @@ RUN apt-get update && \
 
 RUN useradd -ms /bin/bash developer
 RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN passwd -d developer
+
+# スクリーンセーバー・ロック無効化（xfce, gnome両対応）
+RUN apt-get update && apt-get install -y dbus-x11 gsettings-desktop-schemas
+# xfce4: xscreensaver, light-locker, xfce4-screensaver, xfce4-power-managerは既に削除済み
+# gsettingsでGNOME系のスクリーンセーバー・ロックを無効化
+USER developer
+RUN dbus-launch gsettings set org.gnome.desktop.screensaver lock-enabled false || true
+RUN dbus-launch gsettings set org.gnome.desktop.screensaver idle-activation-enabled false || true
+RUN dbus-launch gsettings set org.gnome.desktop.lockdown disable-lock-screen true || true
+USER root
 
 ENV FLUTTER_ROOT=/opt/flutter
 

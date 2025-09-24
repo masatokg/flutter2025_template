@@ -1,5 +1,27 @@
+
 #!/bin/bash
 set -x
+# 既存プロセスの停止（重複起動防止）
+pkill -f xfwm4 || true
+pkill -f xfsettingsd || true
+pkill -f xfdesktop || true
+pkill -f xfce4-session || true
+pkill -f screensaver || true
+pkill -f xiccd || true
+pkill -f xfce4-power-manager || true
+pkill -f notification-daemon || true
+pkill -f xfce4-volumed || true
+
+# /tmp/.ICE-unix の所有者修正
+if [ -d /tmp/.ICE-unix ]; then
+	sudo chown root:root /tmp/.ICE-unix || true
+fi
+
+# 必要なパッケージのインストール（不足時のみ）
+for pkg in xfce4 xfce4-session xfce4-power-manager colord xiccd pm-utils; do
+	dpkg -s $pkg >/dev/null 2>&1 || sudo apt-get update && sudo apt-get install -y $pkg
+done
+
 # VNCサーバーとAndroidエミュレーターを起動するスクリプト
 
 # Xvfb 仮想ディスプレイ起動
@@ -33,7 +55,7 @@ pkill light-locker || true
 echo "====================="
 echo "このターミナルは閉じないでください。"
 echo "操作するには、新しいターミナルを開いてくさださい。"
-echo "flutterプロジェクトフォルダを生成するには、以下のコマンドをターミナルで実行してください\\nflutter create \"プロジェクト名\""
+echo "flutterプロジェクトフォルダを生成するには、以下のコマンドをターミナルで実行してください\nflutter create \"プロジェクト名\""
 echo "「my_appプロジェクトを生成する」例） flutter create my_app"
 echo "そして作成したプロジェクトフォルダへ移動して、flutter run コマンドでプロジェクトアプリを実行してください。"
 echo "cd my_app"

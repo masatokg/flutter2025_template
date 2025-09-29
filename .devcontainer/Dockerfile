@@ -10,6 +10,26 @@ RUN apt-get update && \
     apt-get remove -y xfce4-power-manager && \
     rm -rf /var/lib/apt/lists/*
 
+# 必要なロケールパッケージをインストール
+RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/*
+
+# 日本語UTF-8ロケールを生成
+RUN locale-gen ja_JP.UTF-8
+
+# システム全体のデフォルトロケールを設定
+RUN echo 'LANG=ja_JP.UTF-8' > /etc/default/locale \
+    && echo 'LANGUAGE=ja_JP:ja' >> /etc/default/locale \
+    && echo 'LC_ALL=ja_JP.UTF-8' >> /etc/default/locale
+
+# 環境変数にロケールを設定
+ENV LANG=ja_JP.UTF-8
+ENV LANGUAGE=ja_JP:ja
+ENV LC_ALL=ja_JP.UTF-8
+
+# 日本語フォント（Noto CJK）をインストール（root権限で実行）
+RUN apt-get update && apt-get install -y fonts-noto-cjk
+
+# ユーザー作成・権限設定以降はそのまま
 RUN useradd -ms /bin/bash developer
 RUN echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN passwd -d developer
